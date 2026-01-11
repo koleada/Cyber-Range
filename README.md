@@ -31,12 +31,11 @@ My goal with this was to build a full-fledged mini network, both to demonstrate 
 5. **Using and Configuring Virtual Private Networks:**
     - Understanding what the purpose of a VPN is and why it is useful
     - Setting up a basic VPN using a VPN client and server configuration file
-    - Limitations of using a VPN connection for remote access (particularly from the perspective of an attacker, tooling like Responder is not usable via a VPN connection in most cases)
+    - Limitations of using a VPN connection for remote access (particularly from the perspective of an attacker, man-in-the-middle attacks are not viable via a VPN connection in most cases)
 6. **Active Directory Initial Attack Vectors - How they work, How to perform them, How to defend from them**
     - LLMNR Poisoning - Responder, understanding when LLMNR/NBT-NS/mDNS are used, understanding what causes Responder to actually get a hit, cracking hashes, LLMNR, NBT-NS, and NTLM are ALL enabled by default on Windows machines, LLMNR poisoning coercion techniques via different vulnerabilities (require credentials)
     - SMB Relay - What SMB signing is and why it is so important, how to find machines without SMB signing enabled, ntlmrelayx with responder, ensure signing is enabled on all devices, the importance of following least privilege to mitigate damage if this attack is pulled off
-    - IPv6 DNS Takeover - This is my favorite active directory exploit I've learned about so far. IPv6 is enabled but not used on most machines in most networks, making it a close to perfect technology to target, we can listen for IPv6 packets coming through and pretend to be the DNS server since msot networks do not have an IPv6 DNS server. 
-
+    - IPv6 DNS Takeover - This is my favorite active directory exploit I've learned about so far, IPv6 DNS requests are often generated during normal authetnication flows involving SMB, LDAP, HTTP, or RPC, IPv6 is preferred by Windows but usually not configured in a network, an attacker on the network can respond to the IPv6 DNS requests and specify their own IP resulting in the client machine authenticating to the specified IP, must require signing on SMB and LDAP, must put very specific firewall rules in place to block IPv6 requests on certain protocols
 
 
 
