@@ -6,6 +6,19 @@ This cyber range is built to resemble an enterprise network while also saving me
 
 My goal with this was to build a full-fledged mini network, both to demonstrate my knowledge to others, help them design their own home lab, and also to learn more about administering and red teaming on 'real' networks. I've always been very interested in active directory so one of my main focuses with this lab was to really dive in to it both from an administration/ configuration standpoint and regarding various cyber attacks and defenses specific to AD. Additionally, I have a goal of becoming a penetration tester and obtaining certifications like the OSCP (once I can afford it), so I figured having a true cyber range set up would help me later in my career as well. Lastly, I wanted to gain experience in going through the full network setup process, starting with the design phase.
 
+### High-Level Architecture
+
+The network I created is segmented into multiple subnets to mirror an enterprise environment and enforce network isolation principles:
+
+- **WAN** – Internet-facing network via my host machine and physical router
+- **Firewall/Router** – Central routing, NAT(not really needed here though), DHCP, and inter-subnet access control
+- **Active Directory Subnet** – Domain controller and domain-joined workstations
+- **Attacker Subnet** – Internal 'attacker' machine to perform exploits, monitor the resulting noise, and to test exploit mitigations we implement
+- **Cyber Range Subnet** – Vulnerable machines for exploitation and testing
+- **Monitoring Subnet** – Dedicated subnet for IDS/SIEM and logging (in progress)
+- **VPN Access** – Secure remote access into the Active Directory subnet using OpenVPN (not needed, but I wanted to get experience standing up, configuring, and using VPNs in an 'enterprise' network)
+
+
 ### Overview of Experience Gained and Things Learned
 
 1. **Active Directory Initial Configuration:**
