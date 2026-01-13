@@ -49,7 +49,20 @@ This is a very common way to begin with low-privilege credentials, but quickly e
 ### Relay vs Pass-the-hash
 
 - Relay attacks are prevented with signing, and  pass-the-hash is prevented by disabling NTLM
-- Relay attacks do not require us to ever see hashes, its realtime, pass-the-hash allows us to attempt to use old hashes instead of a real-time NTLM authetnication 
+- Relay attacks do not require us to ever see hashes, its realtime, pass-the-hash allows us to attempt to use old hashes instead of a real-time NTLM authetnication
+
+### Commands and Tooling
+
+The main tool we use for this is Impacket's NTLMRelayX along with Responder. 
+
+Before any of that, we need to determine where signing is not required. We can do that by running `nmap --script=smb-security-mode.nse -p445 <ip-range> -Pn`
+
+Once we have our targets added to a text file we can beging the actual exploit. 
+
+In default Kali Linux, we should be able to run: `impacket-ntlmrelayx -tf targetIPs.txt -smb2support` which just tries to dump the SAM file using SMB relay
+
+For an interactive shell we can run `impacket-ntlmrelayx -tf targetIPs.txt -smb2support -i` from there we just start a listener using netcat on port 11000
+
 
 ### Defenses and Mitigations
 
@@ -62,6 +75,7 @@ This is a very common way to begin with low-privilege credentials, but quickly e
   - Signing is required by default on modern Windows machines; legacy systems will often still have it just *enabled,* which will not prevent this attack
 
 2. Disable LLMNR and NBT-NS, as this can often prevent hashes from being obtained
-3. Follow least privilege by only allowing SMB access to those who need it
+3. Follow least privilege by only allowing SMB access to those who need it and to mitigate damage
 4. Use Kerberos whenever possible 
+
 
