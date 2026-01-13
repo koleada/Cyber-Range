@@ -17,18 +17,18 @@ The machine that initiated the authentication now thinks the IP in the DNS respo
 ### Conditions Required for this to Work
 
 - IPv6 is enabled on victim machines (default on Windows machines)
-- Client must accept attacker controlled IPv6 information (this is the core of the vulnerability)
+- Client must accept attacker-controlled IPv6 information (this is the core of the vulnerability)
   - No real v6 router advertisements exist
-  - Real v6 RAs exist but ours has better metrics or explicitly advertises DNS while the real RA does not
+  - Real v6 RAs exist, but ours has better metrics or explicitly advertises DNS, while the real RA does not
   - RA guard is not enabled on switches
   - DHCPv6 is not enforced
 - Client sends traffic to attacker-controlled DNS
-  - The attcker becomes the IPv6 DNS server
+  - The attacker becomes the IPv6 DNS server
   - Clients send AAAA lookups
   - Attacker replies with any address
   - Client believes attacker is the DC
 - The service used by the client supports NTLM
-  - This is where the authetnication happens
+  - This is where the authentication happens
   - Common ones are SMB, LDAP, HTTP, RPC
 - NTLM is allowed/ network only allows Kerberos
 
@@ -48,7 +48,7 @@ This attack is just another way to put ourselves in a position to receive authen
 
 ### Performing the Attack - Commands and Tools
 
-***THIS ATTACK MUST ONLY BE RAN FOR VERY SHORT PERIODS OF TIME, IT CAN BRING DOWN NETWORKS***
+***THIS ATTACK MUST ONLY BE RAN FOR VERY SHORT PERIODS OF TIME. IT CAN BRING DOWN NETWORKS.***
 
 We have a lot of options depending on what exploit we want to use, often we will want to perform relays, which we use Impacket's NTLMRelayX to perform. 
 
@@ -75,4 +75,5 @@ I think we may even be able to use *bettercap* to do this, too, but again, not p
 6. RA Guard - IPv6 takeover begins with malicious router advertisements; RA Guard will block unauthorized RAs at layer 2. Very important: RA Guard is configured properly (handles fragmentation packets and extension headers)
 7. Disable NTLM where possible, require NTLM signing, deny NTLM to DCs
 8. Monitor RA traffic and look for rogue RAs, unexpected IPv6 responses, NTLM authentication to non-DC hosts, and authentication over IPv6 from workstations
+
 
