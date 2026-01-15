@@ -3,7 +3,7 @@
 I spent a pretty good amount of time planning the best approach for building this home lab envionrment including determining what technologies I should use, what sorts of requirements I have for the network, what things I want to learn and experiment with both now and in the future, general network security best practices, and fundamental routing and networking requirements. 
 
 ### Design Goals
-1. A full-fledged Active Directory environment - AD was the main reason I built this lab. I wanted to reasearch Ad security and learn to to administrate and AAD environment.
+1. A full-fledged Active Directory environment - AD was the main reason I built this lab. I wanted to research AD security and learn to to administrate and AAD environment.
 2. No extra hardware requirements beyond my computer - I was not looking to buy any hardware for this; I needed this cyber range to function on a single desktop (thankfully with a decent amount of RAM).
 3. Networking involvement - I wanted my lab to include as many network devices as possible. I am interested in everything IT related, I wanted to set up my first network and get experience with new technologies.
 4. Replicate a true enterprise environment - I wanted this to mimic a real network I will see at work one day. That was another reason I wanted to have networking devices on there, to better mimic a real network. Additionally, for the security testing, I wanted a realistic environment to research on. Nowadays, most companies will have strong firewalls, if not NGFWs, EDR, top-of-the-line anti-virus, strict group policy, etc I wanted to mimic that.
@@ -15,7 +15,9 @@ I spent a pretty good amount of time planning the best approach for building thi
    - I still did manage to set up one switch, while it was not entirely necessary, it was still kind of interesting
    - I've been going through a CCNA exam course and doing a bunch of labs there too, so the main purpose of this lab was not to do switching, I can do that on Cisco's Packet Tracer
    - I also had to really think carefully about what technologies I could use in the network since everything had to be made into a VM, like you cannot typically make a Cisco device into a VirtualBox VM (certainly not legally, at least).
-  
+
+***
+
 ### High-Level Topology Overview
 The environment consists of two firewall routers connected via a point-to-point (/30) transit network, with each managing distinct trust zones. 
 
@@ -23,6 +25,8 @@ The environment consists of two firewall routers connected via a point-to-point 
 - OPNSense Firewall - This models an internal enterprise firewall/router, connected to it is the Active Directory network, the monitoring network, and a subnet on which VPN clients land. We host an OpenVPN server on this firewall, and the corresponding subnet is able to communicate with both the AD and the monitoring subnet. We also created a switch virtual machine that while not necessary to allow traffic to flow, is still useful for visualization, realism, and expierimentation.  
 
 I chose this architecture to best mimic a modern enterprise network, whereby there are deliberate trust boundaries/security zones separated by internal routed firewalls. 
+
+***
 
 ### Security Zones and Trust Boundaries 
 
@@ -51,6 +55,8 @@ The trust zones are as follows:
    - We assume traffic coming into the OPNSense network through this boundary is malicious and use our firewall rules to only allow what we deem as being benign.
    - This subnet should be minimal, only two addresses here, should not host any services, because its traffic is untrusted.   
 
+***
+
 ### Traffic Flow Philosophy
 
 Network traffic in this lab is governed by a deny-by-default approach. Explicit allow rules are created only where required for specific tasks, such as monitoring capability or remote management. Traffic is generally expected to flow as follows:
@@ -61,6 +67,8 @@ Network traffic in this lab is governed by a deny-by-default approach. Explicit 
 
 East–west traffic within internal subnets is strictly controlled to reduce lateral movement opportunities.
 
+***
+
 ### Layer 3–Focused Security Design
 
 Due to virtualization constraints (switching is done automatically at the hypervisor or host network level) and modern enterprise best practices, security enforcement in this lab is performed primarily at Layer 3. Subnets are routed through firewall appliances rather than relying solely on Layer 2 segmentation.
@@ -68,6 +76,8 @@ Due to virtualization constraints (switching is done automatically at the hyperv
 This design prioritizes clear trust boundaries, explicit routing decisions, and centralized policy enforcement, mirroring how modern enterprise networks are commonly secured.
 
 As mentioned earlier, we did include a switch, but it is not necessary for traffic flow and is just done for deeper inspection and experimentation. 
+
+***
 
 ### Scalability and Future Use
 
@@ -79,11 +89,15 @@ The network is designed to be added to and has a lot of flexibility. So if I one
 
 The use of firewalls also allows for a ton of cool experiumentation and scalability type stuff. Just on the firewall alone, I can learn about and configure routing, static routes, DHCP configuration, dynamic routing protocols, port forwarding, NAT, VPNs, and a lot more. 
 
+***
+
 ### Note
 
 Again, this lab is built largely to perform exploits in an AD envionrment, so I change these rules a lot. The security design architecture laid out above is often broken to give myself the ability to perform various attacks, and eventually learn how to secure my network against them, and detect exploit attempts on the network. 
 
 I did design the network in a security-focused way, both to gain expierence in creating a security focused network, and also to see the benefits and limitations of these network security principles.
+
+***
 
 ### Topology Image (for reference, same as in repo README)
 ![Image of the cyberr range home lab topology](https://raw.githubusercontent.com/koleada/Cyber-Range/refs/heads/main/Architecture/CyberRangeHomeLabTopology.png)
