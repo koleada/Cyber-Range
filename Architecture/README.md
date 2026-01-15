@@ -69,6 +69,16 @@ This design prioritizes clear trust boundaries, explicit routing decisions, and 
 
 As mentioned earlier, we did include a switch but it is not necessary for traffic flow and is just done for deeper inspection and expiermentation. 
 
+### Scalability and Future Use
+
+I wanted this lab enviornment to be something I can grow in to and can adapt to my learning needs and desires as I progress in my carerr. 
+
+There are ways to add more network adapters to VMs then those offered in the VirtualBox GUI using some basic powershell commands. 
+
+The network is designed to be added to and has a lot of flexibility. So if I one day and studying for my OSCP or CEH in the future, and just want to quickly work on exploiting some labs that are recommended when studying for these, I can very quickly download the ISO, throw it in the Cyber Range and am immediately able to work on exploiting it. Simialrly, if I want to test out or learn a new monitoring software, depoloy some linux managemetn machines for the AD, deploy more AD machines, and so forth I can do that extremely easily since everything is virtualized and subnets are configured. 
+
+The use of firewalls also allows for a ton of cool experiumentation and scalability type stuff. Just on the firewall alone I can learn about routing, static routes, DHCP configuraiton, dyanmic routing protocols, port forwarding, NAT, VPNs, and a lot more. 
+
 ### Note
 
 Again, this lab is built largely to perform exploits in an AD envionrment, so I change these rules a lot. The security design architecture laid out above is often broken to give myself the ability to perform various attacks, and eventually learn how to secure my network against them, and detect exploit attempts on the network. 
