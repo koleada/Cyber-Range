@@ -26,7 +26,7 @@ Multi-domain or child-domain designs, from my research, are typically implemente
 - Is another boundary for group policy application. When multiple domains are within a forest, we can apply more domain-wide policy in addition to forest-wide policy.
 - Domains are a replication boundary for domain controllers. Each domain controller maintains its own copy of the data associated with Active Directory within a specific domain. In other words, domain controllers only store data for the specific domain they are on, if there are multiple domains, domain controllers can only belong to a single domain.
 
-Within the domain we have our domain controller (Batman-DC), we have two workstations as well, Joker-PC and Bane-PC. (Yes, I did do a batman themed domain)
+Within the domain, we have our domain controller (Batman-DC), we have two workstations as well, Joker-PC and Bane-PC. (Yes, I did do a batman themed domain)
 
 ### Trust Relationships
 
