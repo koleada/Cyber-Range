@@ -2,7 +2,11 @@
 
 This cyber range is built to resemble an enterprise network while also saving me, as a (sort of) broke college student, from having to spend a ton of money on real hardware, software licenses, paid labs/ education, and so forth. It is complete with multiple subnets, each containing machines with different purposes, a central firewall that is used as a router, a virtual private network to access a certain subnet, and lots of software tooling and configuration across the various machines. My range has a subnet for the attacker machine, an Active Directory network, a subnet for miscellaneous vulnerable machines, and a subnet for monitoring the Active Directory environment. 
 
+***
+
 ![Image of the cyberr range home lab topology](https://raw.githubusercontent.com/koleada/Cyber-Range/refs/heads/main/Architecture/CyberRangeHomeLabTopology.png)
+
+***
 
 ### Project Overview 
 
@@ -11,6 +15,8 @@ My goal with this was to build a full-fledged mini network, both to demonstrate 
 This project is designed for learning the concepts I believe (after doing my research) are most important in securing and administering an Active Directory-centric network, while having a lot of restrictions in terms of storage, computing power, and money. With that said, I intentionally left out very important concepts such as redundancy, backups, high availability principles, and of course custom infrastrcture, architecture, and tooling that would make sense for an actual enterprise based on their specific threat model and risk tolerance.  Basically, what I'm saying is I'm not attempting to actually make a real enterprise network here. 
 
 This README is just for a general overview of the cyber range and the things I learned while building it. I go into much further detail on specific topics in the directories within this repo!
+
+***
 
 ### High-Level Architecture
 
@@ -24,6 +30,7 @@ The network I created is segmented into multiple subnets to mirror an enterprise
 - **Monitoring Subnet** – Dedicated subnet for IDS/SIEM and logging (in progress)
 - **VPN Access** – Secure remote access into the Active Directory subnet using OpenVPN (not needed, but I wanted to get experience standing up, configuring, and using VPNs in an 'enterprise' network)
 
+***
 
 ### Overview of Experience Gained and Things Learned
 
@@ -150,7 +157,21 @@ The network I created is segmented into multiple subnets to mirror an enterprise
         - Importance of staying very up to date with Windows patches and security information
    
 8. **Monitoring, Detection, & Logging:**
-
+    - Designed, implemented, and secured a dedicated monitoring subnet to isolate security tooling from user networks and other untrusted areas
+        - Applied very specific firewall rules governing the monitoring subnet to only allow very specific traffic in and out
+    -  Deployed a centralized Wazuh SIEM and the EDR software to aggregate logs and detect intrusions and malware
+    -  Did a lot of troubleshooting during the initial installation and configuration of Wazuh (I had a lot of trouble finding the correct installation guide, and also had a small bit of trouble with the Wazuh agent install at first)
+    -  Gained hands-on experience with SIEM architecture, workflows, and using the SIEM to recognize and mitigate security flaws in the network and on specific hosts
+    -  Integrated the IDS that is built into the OPNSense firewall with the Wazuh instance to aggregate more logs and detect security issues on the network
+    -  Understood the differences between and got experience using EDR, IDS/IPS, firewalls, and SIEM software
+    -  Practiced SOC-style alert triage, exploit detection, and investigation
+    -  Correlated endpoint and network logs for more sophisticated, detailed, and accurate security analysis
+    -  Analyzed the footprint of various common Active Directory exploits from the perspective of a SOC team
+        - Understood how to detect these exploits in an environment
+        - Practiced writing custom rules to detect various exploits
+    - Researched and evaluated many different monitoring technologies to find the one best suited for my needs
+        - Selected tools based on enterprise relevance, integration capabilities, and cost   
+      
       
 
 
