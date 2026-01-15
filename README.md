@@ -2,6 +2,8 @@
 
 This cyber range is built to resemble an enterprise network while also saving me, as a (sort of) broke college student, from having to spend a ton of money on real hardware, software licenses, paid labs/ education, and so forth. It is complete with multiple subnets, each containing machines with different purposes, a central firewall that is used as a router, a virtual private network to access a certain subnet, and lots of software tooling and configuration across the various machines. My range has a subnet for the attacker machine, an Active Directory network, a subnet for miscellaneous vulnerable machines, and a subnet for monitoring the Active Directory environment. 
 
+![Image of the cyberr range home lab topology](https://github.com/koleada/Cyber-Range/blob/main/Architecture/Cyber%20Range%20Network%20Diagram.drawio.png?raw=true)
+
 ### Project Overview 
 
 My goal with this was to build a full-fledged mini network, both to demonstrate my knowledge to others, help them design their own home lab, and also to learn more about administering and red teaming on 'real' networks. I've always been very interested in Active Directory, so one of my main focuses with this lab was to dive into it from both an administrative and configuration standpoint, as well as regarding various cyber attacks and defenses specific to AD. Additionally, I have a goal of becoming a penetration tester and obtaining certifications like the OSCP (once I can afford it), so I figured having a true cyber range set up would help me later in my career as well. Lastly, I wanted to gain experience in going through the full network setup process, starting with the design phase.
