@@ -18,6 +18,25 @@ This README is just for a general overview of the cyber range and the things I l
 
 ***
 
+## Goals for this Repository
+
+My goal here is not to provide a walkthrough for how to set up a similar lab environment. Tutorials for setting up anything are all across the internet for any of the technologies I implemented in the cyber range.
+
+Instead, my goals are three-fold:
+1. Showcase what I've learned through all of the time I've spent experimenting, configuring, designing, and implementing everything within the cyber range.
+    - I really want to land myself my first job in IT soon, and with the job market as rough as it is, I felt I needed to better demonstrate and showcase what I know
+2. I love note-taking in general, I love being able to refer back to concepts, as in IT your always learning something new, and information kind of just constantly flows in and out of my head.
+    - I also wanted to help reinforce all of the information I learned, it's kind of a lot, so going through my notes and turning them into a full fledges writeup really helps nail down concepts and also prompts me to research specific things that I dont have as good of an understanding of. 
+4. I want to both help and possibly provide others with some ideas and information on all these different concepts I've experimented with and learned through this lab.
+    - I put a lot of time into really trying to squeeze as much functionality and stuff into my cyber range, and I think I came up with some pretty cool ideas that others may like
+    - Once I finish, I think this repository will be quite useful for someone who is beginning to learn about Active Directory administration and security. 
+5.  Home labs are so awesome to have.
+    - Having a home lab is the coolest thing ever. Instead of paying for HTB (which is quite awesome), I can just create my own vulnerable machines or quickly download one of the many awesome open source labs people put on VulnHub.
+    - Any IT professional should have an environment to learn and experiment in. I believe tinkering is such a huge part of learning, and there is no better way to do that than with a home lab
+
+
+***
+
 ### High-Level Architecture
 
 The network I created is segmented into multiple subnets to mirror an enterprise environment and enforce network isolation principles:
