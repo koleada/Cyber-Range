@@ -168,9 +168,19 @@ Your Group Policy will directly affect your network's security posture, for bett
 
 **NTLM:**
 
+NTLM is a legacy authentication protocol that has since been replaced, by default, with Kerberos. 
 
+By default in a current AD envionrment, NTLM is enabled as a fallback option that is to be used only if Kerberos fails. 
 
+NTLM has the following characteristics:
+- Uses a challenge-response mechanism for authentication
+- Widely considered insecure for a multitude of reasons
+- Still commonly present within modern enviornments, usually to keep comptability with legacy systems that do not suppot Kerberos
 
-
-
+Group Policy allows NTLM to be:
+- Fully Allowed: NTLM is allowed completely across the scope of the policy
+- Auditied: Allows admins to better monitor NTLM authentication in their network via increased logging
+- Restricted: Restricted meaning NTLM is allowed or disabled for only a select group(s)
+- Disabled: NTLM is completely disabled accross the entire scope of the GPO, it cannot be used whatsoever
+- Control the version of NTLM: There are 
 
