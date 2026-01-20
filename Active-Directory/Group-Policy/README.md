@@ -32,7 +32,7 @@ Within the AD network in my home lab, I practiced and learned about using group 
 
 ### Group Policy Hierarchy 
 
-Before implementing Group Policy within a network, one must understand the processing order of Group Policy. By processing order, I'm referring to the heirarchy of how Group Policy handles conflicting policies that are applied to a given subject (OU, doamin, etc). This is essential for troubleshooting Group Policy like when we are not sure why a specific policy is or is not being applied, or determining where inherited behavior is coming from, etc. 
+Before implementing Group Policy within a network, one must understand the processing order of Group Policy. By processing order, I'm referring to the hierarchy of how Group Policy handles conflicting policies that are applied to a given subject (OU, domain, etc). This is essential for troubleshooting Group Policy, like when we are not sure why a specific policy is or is not being applied, or determining where inherited behavior is coming from, etc. 
 
 Group Policy Objects are applied based on specificity, where the most specific rule takes precedence over the less specific ones. 
 
@@ -87,7 +87,7 @@ By default, the Authenticated Users group (a securiyt group that is on all ADs b
 
 Security filtering gives us the ability to change that ACL
 
-So for a given GPO, we can remove the Authenticated Users group from it, meaning just being in the Authenticated Users group is not sufficient to read or apply the policy. We can then select specific security groups that should be able to read and apply that policy. 
+So, for a given GPO, we can remove the Authenticated Users group from it, meaning just being in the Authenticated Users group is not sufficient to read or apply the policy. We can then select specific security groups that should be able to read and apply that policy. 
 
 Depending on the environment, our OU structure could potentially perfectly mirror the reality of the business layout and necessity in terms of roles and the policy that would be applied. However, this is often not the case, especially in larger environments. Reality tends to be filled with exceptions to the rules, which is really where security filtering shines.
 
@@ -166,7 +166,7 @@ Group Policy gives us a very easy way to control different aspects of these prot
 
 Your Group Policy will directly affect your network's security posture, for better or for worse. I hope it's for the better, so please read on to see how Group Policy can increase your Active Directory network's security. 
 
-
+**NTLM:**
 
 
 
