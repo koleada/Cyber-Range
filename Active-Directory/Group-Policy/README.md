@@ -177,10 +177,21 @@ NTLM has the following characteristics:
 - Widely considered insecure for a multitude of reasons
 - Still commonly present within modern enviornments, usually to keep comptability with legacy systems that do not suppot Kerberos
 
+NTLM Versions: 
+- Lan Manager(LM) - This is kind of the predecessor to the NTLM we commonly see in networks today. It is extremely old and extremely insecure.
+- NTLM - Also sometimes referred to as NTLMv1, this version still has pretty weak cryptography meaning the hashes can be easy to crack, it allows for relay and replay attacks, very insecure.
+- NTLMv2 - Very similar but adds additional info including a client nonce, timestamp, target information, and uses stronger encryption making the hashes much harder to crack, the timestamps elimite the possibility of replay attacks, but relay is still viable.
+- NTLMv2 with Session Security - Most secure option (still insecure), provides additional protections like message signing and optionally encryption using a derived session key, this protects against things like session hijacking and message tampering but does not elimitate credential theft or relay attacks. 
+
 Group Policy allows NTLM to be:
-- Fully Allowed: NTLM is allowed completely across the scope of the policy
-- Auditied: Allows admins to better monitor NTLM authentication in their network via increased logging
-- Restricted: Restricted meaning NTLM is allowed or disabled for only a select group(s)
-- Disabled: NTLM is completely disabled accross the entire scope of the GPO, it cannot be used whatsoever
-- Control the version of NTLM: There are 
+- Control general use of NTLM accross the AD enviornment:
+    - Allowed: NTLM is allowed completely across the scope of the policy
+    - Auditied: Allows admins to better monitor NTLM authentication in their network via increased logging
+    - Disabled: NTLM is completely disabled accross the entire scope of the GPO
+- Control the version of NTLM: There are a few different versions of NTLM that Windows supports which we can allow or disallow using Group Policy
+    - Send LM & NTLM(v1): This is the most insecure setting possible and should always be avoided if possible. 
+    - Send LM & NTLM(v1) - use NTLMv2 session secuirty if negotiated:  Uses NTLMv2 with session security if both machines support it but will still allow use of LM and NTLM, quite insecure still.
+    - Send NTLM responses only: This only allows NTLMv1 to be used, again still quite insecure.
+    - Send NTLMv2 responses only: This only allows NTLMv2 to be used, this is the bare minimum in most modern envionrments, but again still quite insecure.
+    - 
 
