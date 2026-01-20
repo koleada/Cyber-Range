@@ -164,7 +164,8 @@ Within my lab environment, I experimented and learned about many common AD vulne
 
 Group Policy gives us a very easy way to control different aspects of these protocols that directly change the feasibility of attacks involving these protocols (among many others). 
 
-Your Group Policy will directly affect your networks security posture, for better or for worse. I hope its for better so please read on to see how Group Policy can increase your Active Directory network's security. 
+Your Group Policy will directly affect your network's security posture, for better or for worse. I hope it's for the better, so please read on to see how Group Policy can increase your Active Directory network's security. 
+
 
 
 
