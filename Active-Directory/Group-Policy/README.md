@@ -177,6 +177,9 @@ NTLM has the following characteristics:
 - Widely considered insecure for a multitude of reasons
 - Still commonly present within modern enviornments, usually to keep comptability with legacy systems that do not suppot Kerberos
 
+**NTLM Authentication Protocol Diagram**
+![A daigram of the NTLM Authentication Protocol](https://github.com/koleada/Cyber-Range/blob/main/Diagrams/NTLM.drawio.png?raw=true)
+
 NTLM Versions: 
 - Lan Manager(LM) - This is kind of the predecessor to the NTLM we commonly see in networks today. It is extremely old and extremely insecure.
 - NTLM - Also sometimes referred to as NTLMv1, this version still has pretty weak cryptography meaning the hashes can be easy to crack, it allows for relay and replay attacks, very insecure.
