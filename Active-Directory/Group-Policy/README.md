@@ -183,7 +183,7 @@ NTLM Versions:
 - NTLMv2 - Very similar but adds additional info including a client nonce, timestamp, target information, and uses stronger encryption making the hashes much harder to crack, the timestamps elimite the possibility of replay attacks, but relay is still viable.
 - NTLMv2 with Session Security - Most secure option (still insecure), provides additional protections like message signing and optionally encryption using a derived session key, this protects against things like session hijacking and message tampering but does not elimitate credential theft or relay attacks. 
 
-Group Policy allows NTLM to be:
+Group Policy NTLM Controls:
 - Control general use of NTLM accross the AD enviornment:
     - Allowed: NTLM is allowed completely across the scope of the policy
     - Auditied: Allows admins to better monitor NTLM authentication in their network via increased logging
@@ -200,9 +200,41 @@ Group Policy allows NTLM to be:
 
 In my lab I intentionally allowed NTLM to practice performing and monitoring a wide array of exploits, I then learned how NTLM actually works internally, and how to secure a network against the assocaited risks of NTLM. 
 
+**Kerberos:**
 
+Kerberos is the default, modern authentication protocol used in Active Directory networks. 
 
+Kerberos relies on the following:
+- A central Key Distrobution Center(KDC):
+    - The KDC is essentially two services the Authentication Service(AS) and the Ticket Granting Service(TGS).
+    - Each domain has a one or more KDC(s) that serves as the cental authority for authentication within said doamin
+- Ticket Granting Tickets(TGTs):
+    - Ticket Granting Tickets are basically encrypted tokens that are issued by the KDC.
+    - These tickets get issued to any identity after they sucessfully authenticate to the domain.
+    - The TGS is used as a credential to avoid having to send passwords in plain text and allow users to access services without re-entering their password until the TGT expires.
+- Service Tickets and Ticket Granting Service(TGS):
+    - As mentioned above, the TGS is a service that runs as part of the KDC.
+    - When a client wants to access a service, they send a request to the TGS containing their TGT, to prove they are authenticated, and the Service Principal Name(SPN) of the desired service.
+    - If the request is valid, the TGS will issue a service ticket that allows access to that service for a limited time. 
+- Shared Secretes Between Principals and the KDC:
+    - Kerberos relies on symmetric encryption, meaning the client and server both encrypt and decypt with the same key.
+    - If the client and server are able to decrypt the others message, they trust eachother, proving one another has access to the shared key.
+    - This key is derrived on both sides from the clients password, meaning the keys and the plaintext passwords are never sent over the network.
+    - Keys get stored on all domain controllers in a file called NTDS.dit.
+    - There are often multiple different keys each derrived using different cryptographic algorithms on the users password.
 
+Group Policy Kerberos Control:
+- Maximum lifetime for a service ticket: Controls how long a service ticket is valid for. 
+- Maximum lifttime for a ticket granting ticket: Controls how long a TGT is good for before renewing the ticket or re-entering credentials.
+- Maximum lifetime for user ticket renewal: Controls how long a user can continually renew a TGT before being forced to renter credentials.
+    - Renewal is a way to make a TGT valid for longer without re-entering credentials.
+-  We can disable the Kerberos fallback to NTLM feature by just denying the use of NTLM as described earlier.
+-  Configure encryption types used for Kerberos: These encryption methods are used to derive the keys. AES256 is the most secure, AES128 is also currently good, but if enforced could break older accounts until they reset their password, DES is the worst option and should be disabled, RC4 is the second worst and we should aim to reduce or elimite its usage.
+-  Use gMSA where possible for service accounts to automatically rotate service account passwords and ensure all are long and random.
+-  Mark admin accounts as sensitive and prevent delegation to reduce the risk of credential delegation and ticket forwarding
+-  Audit TGT issuance and TGS requests to get lots of logs and better monitoring capability
+
+I really spent a lot of time learning about these two foundational authetnication protocols present in Active Directory. Both have a huge amount of associated vulnerabilities and require real thought and understanding to properly defend against.
 
 
 
