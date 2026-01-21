@@ -192,6 +192,17 @@ Group Policy allows NTLM to be:
     - Send LM & NTLM(v1): This is the most insecure setting possible and should always be avoided if possible. 
     - Send LM & NTLM(v1) - use NTLMv2 session secuirty if negotiated:  Uses NTLMv2 with session security if both machines support it but will still allow use of LM and NTLM, quite insecure still.
     - Send NTLM responses only: This only allows NTLMv1 to be used, again still quite insecure.
-    - Send NTLMv2 responses only: This only allows NTLMv2 to be used, this is the bare minimum in most modern envionrments, but again still quite insecure.
-    - 
+    - Send NTLMv2 responses only: This makes it default to NTLMv2, but allows LM and NTLM if a client does not support NTLMv2, again still quite insecure.
+    - Send NTLMv2 responses only - refuse LM: Forces NTLMv2 and completely disallows the use of LM.
+    - Send NTLMv2 responses only - refuse LM and NTLM: Forces only NTLMv2 to be used.
+-  Restrict outgoing NTLM authentication - We can allow, audit, or disable outgoing NTLM traffic, we can also create an allow list of remote servers we want internal clients to be able to authenticate to using NTLM.
+-  Restrict incoming NTLM authentication - We can allow, audit, or disable incoming NTLM traffic, we can also create an allow list of remote clients we want to be able to authenticate to internal servers using NTLM.
+
+In my lab I intentionally allowed NTLM to practice performing and monitoring a wide array of exploits, I then learned how NTLM actually works internally, and how to secure a network against the assocaited risks of NTLM. 
+
+
+
+
+
+
 
