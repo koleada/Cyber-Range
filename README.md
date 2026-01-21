@@ -4,7 +4,7 @@ This cyber range is built to resemble an enterprise network while also saving me
 
 ***
 
-![Image of the cyberr range home lab topology](https://raw.githubusercontent.com/koleada/Cyber-Range/refs/heads/main/Diagrams/Cyber%20Range%20Network%20Diagram.drawio%20(3).png)
+![Image of the cyberr range home lab topology](https://raw.githubusercontent.com/koleada/Cyber-Range/refs/heads/main/Diagrams/Cyber-Range-Topology.png)
 
 ***
 
