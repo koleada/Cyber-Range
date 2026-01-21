@@ -100,4 +100,4 @@ I did design the network in a security-focused way, both to gain expierence in c
 ***
 
 ### Topology Image (for reference, same as in repo README)
-![Image of the cyberr range home lab topology](https://raw.githubusercontent.com/koleada/Cyber-Range/refs/heads/main/Diagrams/Cyber%20Range%20Network%20Diagram.drawio%20(3).png)
+![Image of the cyberr range home lab topology](https://raw.githubusercontent.com/koleada/Cyber-Range/refs/heads/main/Diagrams/Cyber-Range-Topology.png)
