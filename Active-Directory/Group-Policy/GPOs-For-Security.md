@@ -11,7 +11,9 @@ Group Policy gives us a very easy way to control different aspects of these prot
 
 Your Group Policy will directly affect your network's security posture, for better or for worse. I hope it's for the better, so please read on to see how Group Policy can increase your Active Directory network's security. 
 
-**NTLM:**
+***
+
+### NTLM
 
 NTLM is a legacy authentication protocol that has since been replaced, by default, with Kerberos. 
 
@@ -48,7 +50,9 @@ Group Policy NTLM Controls:
 
 In my lab I intentionally allowed NTLM to practice performing and monitoring a wide array of exploits, I then learned how NTLM actually works internally, and how to secure a network against the assocaited risks of NTLM. 
 
-**Kerberos:**
+***
+
+### Kerberos:
 
 Kerberos is the default, modern authentication protocol used in Active Directory networks. 
 
