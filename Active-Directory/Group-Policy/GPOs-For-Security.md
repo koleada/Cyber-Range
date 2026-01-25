@@ -25,7 +25,7 @@ NTLM has the following characteristics:
 - Still commonly present within modern enviornments, usually to keep comptability with legacy systems that do not suppot Kerberos
 
 **NTLM Authentication Protocol Diagram**
-![A daigram of the NTLM Authentication Protocol](https://github.com/koleada/Cyber-Range/blob/main/Diagrams/NTLM.drawio.png?raw=true)
+![A daigram of the NTLM Authentication Protocol](https://raw.githubusercontent.com/koleada/Cyber-Range/refs/heads/main/Diagrams/NTLM.png)
 
 NTLM Versions: 
 - Lan Manager(LM) - This is kind of the predecessor to the NTLM we commonly see in networks today. It is extremely old and extremely insecure.
