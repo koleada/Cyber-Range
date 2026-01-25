@@ -74,6 +74,9 @@ Kerberos relies on the following:
     - This key is derrived on both sides from the clients password, meaning the keys and the plaintext passwords are never sent over the network.
     - Keys get stored on all domain controllers in a file called NTDS.dit.
     - There are often multiple different keys each derrived using different cryptographic algorithms on the users password.
+ 
+**Kerberos Authentication Protocol Diagram**
+![A daigram of the Kerberos Authentication Protocol](https://raw.githubusercontent.com/koleada/Cyber-Range/refs/heads/main/Diagrams/Kerberos%20Protocol%20Diagram.png)
 
 Group Policy Kerberos Control:
 - Maximum lifetime for a service ticket: Controls how long a service ticket is valid for. 
