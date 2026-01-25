@@ -89,4 +89,31 @@ Group Policy Kerberos Control:
 -  Mark admin accounts as sensitive and prevent delegation to reduce the risk of credential delegation and ticket forwarding
 -  Audit TGT issuance and TGS requests to get lots of logs and better monitoring capability
 
-I really spent a lot of time learning about these two foundational authetnication protocols present in Active Directory. Both have a huge amount of associated vulnerabilities and require real thought and understanding to properly defend against.
+I really spent a lot of time learning about these two foundational authentication protocols present in Active Directory. Both have a huge amount of associated vulnerabilities and require real thought and understanding to properly defend against.
+
+***
+
+### Network Authentication Hardening (SMB & LDAP)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
