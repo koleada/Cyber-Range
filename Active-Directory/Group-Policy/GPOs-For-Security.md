@@ -13,6 +13,8 @@ Your Group Policy will directly affect your network's security posture, for bett
 
 ***
 
+## Authentication Protocols
+
 ### NTLM
 
 NTLM is a legacy authentication protocol that has since been replaced, by default, with Kerberos. 
@@ -49,8 +51,6 @@ Group Policy NTLM Controls:
 -  Restrict incoming NTLM authentication - We can allow, audit, or disable incoming NTLM traffic, we can also create an allow list of remote clients we want to be able to authenticate to internal servers using NTLM.
 
 In my lab I intentionally allowed NTLM to practice performing and monitoring a wide array of exploits, I then learned how NTLM actually works internally, and how to secure a network against the assocaited risks of NTLM. 
-
-***
 
 ### Kerberos:
 
@@ -93,16 +93,69 @@ I really spent a lot of time learning about these two foundational authenticatio
 
 ***
 
-### Network Authentication Hardening (SMB & LDAP)
+## Network Authentication Hardening (SMB & LDAP)
 
+**Why Does SMB and LDAP security matter?**
 
+SMB and LDAP each introduce unique and important attack surface compared to NTLM and Kerberos. 
 
+Both protocols:
+- Are foundational in essentially all Active Directory enviornments
+- Often require NTLM or Kerberos authentication to be used
+- Can be abused for man-in-the-middle (MITM), relay, and downgrade attacks if not configured properly
 
+### Breif Overview of SMB & LDAP
 
+**SMB Basics**
 
+SMB is a protoocl used for file and resource sharing. In this section I will provide a super breif overview of what it is so we can understand how to secure it. 
 
+In an AD environment, SMB is commonly used for:
+- File shares
+- SYSVOL and NETLOGON access
+- Printer access
+- Remote management
 
+SMB mainly runs on port 445, but older versions will also use port 139.
 
+Often shares or resource will require authentication to access, again Kerberos is used by default on modern devices but it will still fallback to NTLM if it fails. 
+
+SMB does NOT authenticate user itself, it uses other protocols to do that. SMB does rely on the authentication performed by the other protocol and still carries sensitive session traffic. 
+
+**LDAP Basics**
+
+LDAP is the protocol used to query and change directoyr object, authenticate users, resolve group memberships, and many more AD related tasks. LDAP is one of the main underlying protocols of AD.
+
+In an AD enviornment:
+- Domain controllers act as LDAP servers
+- Clients, application, services, etc act as LDAP clients
+
+Common AD uses for LDAP:
+- User logons to the domain
+- Application or service authentication
+- Group lookups
+- Policy processing
+
+LDAP uses port 389 (both TCP and UDP), LDAPS uses port 636 (TCP only)
+
+Again, similar to SMB, LDAP does not perform authentication itself, it uses other protocols to do that. LDAP traffic also carries very sensitive data even after authentication is complete. 
+
+### Signing
+
+Signing adds a cryptographic signiature to each message sent on a protocol. 
+
+The signiture is dervied from a session token that is negotiated at authentication and gets verified by the recieving host. 
+
+**Why is signing important?**
+- It guarentees Integrity - Message cannot be altered in transit (MITM attacks)
+- It guarantees Authentiticty - Messages are certainly from the authenticated peer claiming to send them
+
+**What does signing prevent?**
+- Relay attacks (used for lateral movement)
+- MITM modification of in-tranist traffic
+- Session hijacking
+
+Signing does not encrypt the traffic, it just adds a cryptographic signiture that gets verified by the recieving machine to ensure integrity and authenticity.
 
 
 
